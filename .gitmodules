@@ -1,3 +1,6 @@
 [submodule "PRISMA"]
 	path = PRISMA
 	url = https://github.com/PedroXeroso/PRISMA.git
+[submodule "prisma_projeto"]
+	path = prisma_projeto
+	url = https://github.com/PedroXeroso/PRISMA.git
