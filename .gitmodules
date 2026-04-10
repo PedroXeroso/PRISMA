@@ -1,0 +1,3 @@
+[submodule "PRISMA"]
+	path = PRISMA
+	url = https://github.com/PedroXeroso/PRISMA.git
