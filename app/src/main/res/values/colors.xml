@@ -7,7 +7,7 @@
         <item>@color/minha_cor_2</item>
         <item>@color/minha_cor_3</item>
     </array>
-    <color name="minha_cor_1">#48D1CC</color>
-    <color name="minha_cor_2">#20B2AA</color>
-    <color name="minha_cor_3">#008080</color>
+    <color name="minha_cor_1">#B39EB5</color>
+    <color name="minha_cor_2">#5D5A56</color>
+    <color name="minha_cor_3">#605088</color>
 </resources>

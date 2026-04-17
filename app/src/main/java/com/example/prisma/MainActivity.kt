@@ -19,6 +19,10 @@ class MainActivity : AppCompatActivity() {
         val tvErroSenha = findViewById<TextView>(R.id.tvErroSenha)
         val botaoEntrar = findViewById<Button>(R.id.botao)
 
+
+        findViewById<TextView>(R.id.tvIrParaCadastro).setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
+        }
         botaoEntrar.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val senha = etSenha.text.toString().trim()
@@ -32,18 +36,10 @@ class MainActivity : AppCompatActivity() {
                 tvErroEmail.text = "O campo não pode estar vazio"
                 tvErroEmail.visibility = View.VISIBLE
                 validado = false
-            } else if (!email.endsWith("@mesquita.com.br")) {
-                tvErroEmail.text = "Use o e-mail @mesquita.com.br"
-                tvErroEmail.visibility = View.VISIBLE
-                validado = false
             }
 
             if (senha.isEmpty()) {
                 tvErroSenha.text = "A senha não pode estar vazia"
-                tvErroSenha.visibility = View.VISIBLE
-                validado = false
-            } else if (senha.length < 6) {
-                tvErroSenha.text = "A senha deve ter no mínimo 6 caracteres"
                 tvErroSenha.visibility = View.VISIBLE
                 validado = false
             }
@@ -54,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("NOME_USUARIO", nomeParaMostrar)
                 startActivity(intent)
             }
+
         }
     }
 }
