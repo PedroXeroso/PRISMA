@@ -18,10 +18,16 @@ class MainActivity : AppCompatActivity() {
         val tvErroEmail = findViewById<TextView>(R.id.tvErroEmail)
         val tvErroSenha = findViewById<TextView>(R.id.tvErroSenha)
         val botaoEntrar = findViewById<Button>(R.id.botao)
+        val tvEsqueciSenha = findViewById<TextView>(R.id.tvEsqueciSenha)
 
-
+        
         findViewById<TextView>(R.id.tvIrParaCadastro).setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
+        }
+
+        tvEsqueciSenha.setOnClickListener {
+            val intent = Intent(this, RecuperarSenhaActivity::class.java)
+            startActivity(intent)
         }
         botaoEntrar.setOnClickListener {
             val email = etEmail.text.toString().trim()

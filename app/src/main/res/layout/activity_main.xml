@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -28,31 +27,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="24dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="24dp"
-                android:background="@drawable/badge_background"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="12dp"
-                android:paddingVertical="6dp">
-
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginEnd="6dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Prisma"
-                    android:textColor="#FFFFFF"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -82,10 +56,11 @@
                 app:cardElevation="4dp">
 
                 <ImageView
-                    android:layout_width="257dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/prismaa" />
+                    android:src="@drawable/prismalogotriangulo" />
+
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -113,9 +88,9 @@
                 android:id="@+id/tvErroEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginBottom="12dp"
-                android:text="E-mail inválido"
+                android:text="O campo não pode estar vazio"
                 android:textColor="#FF0000"
                 android:textSize="12sp"
                 android:visibility="gone" />
@@ -123,6 +98,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="4dp"
                 android:text="Senha"
                 android:textColor="#212121"
@@ -142,28 +118,33 @@
                 android:textColorHint="#9E9E9E" />
 
             <TextView
-                android:id="@+id/tvesqueceusenha"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_gravity=""
-                android:layout_marginTop="16dp"
-                android:text="Esqueci minha senha"
-                android:textColor="#6A1B9A"
-                android:textSize="10dp"
-                android:textStyle="bold" />
-
-            <TextView
                 android:id="@+id/tvErroSenha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="24dp"
-                android:text="Senha incorreta"
+                android:layout_marginTop="4dp"
+                android:text="A senha não pode estar vazia"
                 android:textColor="#FF0000"
                 android:textSize="12sp"
                 android:visibility="gone" />
 
-            <Button
+            <TextView
+                android:id="@+id/tvEsqueciSenha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:minHeight="48dp"
+                android:padding="8dp"
+                android:text="Esqueci minha senha"
+                android:textColor="#6A1B9A"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/botao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -173,18 +154,21 @@
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
-
             <TextView
                 android:id="@+id/tvIrParaCadastro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:minHeight="48dp"
+                android:padding="8dp"
                 android:text="Não possui uma conta? Cadastre-se"
                 android:textColor="#6A1B9A"
                 android:textSize="14sp"
                 android:textStyle="bold" />
-
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

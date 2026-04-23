@@ -116,7 +116,7 @@
                     android:padding="12dp" />
             </LinearLayout>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnProximo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
