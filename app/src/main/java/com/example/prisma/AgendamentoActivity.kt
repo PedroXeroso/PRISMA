@@ -12,6 +12,8 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import java.util.Calendar
 
 class AgendamentoActivity : AppCompatActivity() {
@@ -27,12 +29,13 @@ class AgendamentoActivity : AppCompatActivity() {
         val btnConfirmar = findViewById<Button>(R.id.btnConfirmar)
         val layoutConfirmacao = findViewById<LinearLayout>(R.id.layoutConfirmacao)
         val tvResumoTexto = findViewById<TextView>(R.id.tvResumoTexto)
-        val etDescricao = findViewById<EditText>(R.id.etDescricao)
+        val chipGroup = findViewById<ChipGroup>(R.id.chipGroupDescricao)
         val containerHorarios = findViewById<LinearLayout>(R.id.containerHorarios)
         val tvListaVazia = findViewById<TextView>(R.id.tvListaVazia)
         val iconSair = findViewById<ImageView>(R.id.iconSair)
 
-        findViewById<TextView>(R.id.tvNomeUsuario).text = "Olá, ${intent.getStringExtra("NOME_USUARIO") ?: "Usuário"}"
+        findViewById<TextView>(R.id.tvNomeUsuario).text =
+            "Olá, ${intent.getStringExtra("NOME_USUARIO") ?: "Usuário"}"
 
         iconSair.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -46,19 +49,13 @@ class AgendamentoActivity : AppCompatActivity() {
         }
 
         btnConfirmar.setOnClickListener {
-            val descricao = etDescricao.text.toString().trim()
-
-            if (descricao.isEmpty()) {
-                Toast.makeText(this, "Por favor, adicione uma descrição!", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            val selectedChipId = chipGroup.checkedChipId
+            if (selectedChipId != View.NO_ID) {
+                val selectedChip = findViewById<Chip>(selectedChipId)
+                val textoDaTag = selectedChip.text.toString()
+            } else {
+                Toast.makeText(this, "Por favor, selecione uma tag", Toast.LENGTH_SHORT).show()
             }
-
-            val agendamentoTexto = "$dataFinalParaConfirmar às $horaFinalParaConfirmar"
-            adicionarCardAgendamento(containerHorarios, agendamentoTexto, descricao, tvListaVazia)
-
-            layoutConfirmacao.visibility = View.GONE
-            etDescricao.text.clear()
-            Toast.makeText(this, "Agendado com sucesso!", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -81,21 +78,34 @@ class AgendamentoActivity : AppCompatActivity() {
 
     private fun abrirRelogio(tvResumo: TextView, layout: View) {
         val cal = Calendar.getInstance()
-        val tpd = TimePickerDialog(this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, { _, hora, minuto ->
+        val tpd = TimePickerDialog(
+            this,
+            android.R.style.Theme_Holo_Light_Dialog_NoActionBar,
+            { _, hora, minuto ->
 
-            if (hora in 8..20) {
-                horaFinalParaConfirmar = String.format("%02d:%02d", hora, minuto)
-                tvResumo.text = "📅 Data: $dataFinalParaConfirmar\n⏰ Horário: $horaFinalParaConfirmar"
-                layout.visibility = View.VISIBLE
-            } else {
-                Toast.makeText(this, "Escolha entre 08h e 21h", Toast.LENGTH_SHORT).show()
-            }
-        }, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true)
+                if (hora in 8..20) {
+                    horaFinalParaConfirmar = String.format("%02d:%02d", hora, minuto)
+                    tvResumo.text =
+                        "📅 Data: $dataFinalParaConfirmar\n⏰ Horário: $horaFinalParaConfirmar"
+                    layout.visibility = View.VISIBLE
+                } else {
+                    Toast.makeText(this, "Escolha entre 08h e 21h", Toast.LENGTH_SHORT).show()
+                }
+            },
+            cal.get(Calendar.HOUR_OF_DAY),
+            cal.get(Calendar.MINUTE),
+            true
+        )
         tpd.window?.setBackgroundDrawableResource(android.R.color.transparent)
         tpd.show()
     }
 
-    private fun adicionarCardAgendamento(container: LinearLayout, dataHora: String, desc: String, tvVazio: TextView) {
+    private fun adicionarCardAgendamento(
+        container: LinearLayout,
+        dataHora: String,
+        desc: String,
+        tvVazio: TextView
+    ) {
         val card = MaterialCardView(this).apply {
             val params = LinearLayout.LayoutParams(-1, -2)
             params.setMargins(0, 0, 0, 24)
