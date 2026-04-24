@@ -105,8 +105,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Selecione o uso da sala:"
                         android:layout_marginTop="16dp"
+                        android:text="Selecione o uso da sala:"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -115,31 +115,47 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        app:singleSelection="true"
-                        app:selectionRequired="true">
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipEstudar"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Estudar" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipPodcast"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Podcast" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipReuniao"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Reunião" />
+                        app:singleSelection="true">
 
 
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipEstudar"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estudar"
+                        android:textColor="#333333"
+                        app:checkedIconVisible="true"
+                        app:checkedIconTint="#8A2BE2"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipStrokeColor="#8A2BE2"
+                        app:chipStrokeWidth="1dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipPodcast"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Podcast"
+                        android:textColor="#333333"
+                        app:checkedIconVisible="true"
+                        app:checkedIconTint="#8A2BE2"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipStrokeColor="#8A2BE2"
+                        app:chipStrokeWidth="1dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipReuniao"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reunião"
+                        android:textColor="#333333"
+                        app:checkedIconVisible="true"
+                        app:checkedIconTint="#8A2BE2"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipStrokeColor="#8A2BE2"
+                        app:chipStrokeWidth="1dp" />
                     </com.google.android.material.chip.ChipGroup>
 
                     <androidx.appcompat.widget.AppCompatButton

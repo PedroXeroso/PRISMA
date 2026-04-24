@@ -50,11 +50,20 @@ class AgendamentoActivity : AppCompatActivity() {
 
         btnConfirmar.setOnClickListener {
             val selectedChipId = chipGroup.checkedChipId
+
             if (selectedChipId != View.NO_ID) {
                 val selectedChip = findViewById<Chip>(selectedChipId)
                 val textoDaTag = selectedChip.text.toString()
+                val resumoDataHora = "$dataFinalParaConfirmar às $horaFinalParaConfirmar"
+
+                adicionarCardAgendamento(containerHorarios, resumoDataHora, textoDaTag, tvListaVazia)
+                layoutConfirmacao.visibility = View.GONE
+                chipGroup.clearCheck()
+
+                Toast.makeText(this, "Agendamento realizado!", Toast.LENGTH_SHORT).show()
+
             } else {
-                Toast.makeText(this, "Por favor, selecione uma tag", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor, selecione o uso da sala (Tag)", Toast.LENGTH_SHORT).show()
             }
         }
     }
